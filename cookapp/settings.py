@@ -15,6 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+MEDIA_ROOT = 'media/'
+MEDIA_URL = 'media/'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -25,7 +28,7 @@ SECRET_KEY = 'r0-u5a=k)_qep5r=4e2k#wf0^-(ixyu#g7+%2snsj68m+hdkxy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'superstep.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'superstep.pythonanywhere.com']
 
 
 # Application definition
@@ -37,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4',
     'blog',
+    'cook',
 ]
 
 MIDDLEWARE = [

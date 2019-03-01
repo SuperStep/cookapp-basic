@@ -1,0 +1,4 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "/home/egor_darya/Документы/repos/django-env/bin/python3"
+}

@@ -1,0 +1,44 @@
+{% extends 'cook/base.html' %}
+{% block content %}
+<div class="row">
+    {% for recipie in recipies%}
+    <div class="col">
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="card-img-top" src="{{recipie.image.url}}" alt="Card image cap">
+                        </div>
+                        <div class="col-8">
+                            <h5 class="card-title">{{recipie.title}}</h5>
+                            <p class="card-text scroll">{{recipie.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group">
+                {% for ingredient in recipie.ingredients.all%}
+                    <li class="list-group-item">{{ingredient.title}}</li>
+                {% endfor %}
+                </ul>
+                <a href="{% url 'recipie_detail' pk=recipie.pk %}" class="btn btn-primary btn-lg btn-block">Edit</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>

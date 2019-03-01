@@ -1,0 +1,57 @@
+{% extends 'cook/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm">
+        <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">{{recipie.title}}</h5>
+            <p class="card-text">{{recipie.description}}</p>
+            <ul class="list-group">
+            {% for ingredient in recipie.ingredients.all%}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ingredient.title}}
+                    <form action="{{recipie.pk}}/delete/{{ingredient.pk}}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>   
+                </li>             
+            {% endfor %}
+            </ul>
+            <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">
+                Add
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Choose ingredients</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                {% for ingredient in ingredients%}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="pk" value="{{ingredient.pk}}">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            {{ingredient.title}}
+                        </button>
+                    </form>
+                {% endfor %}   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
